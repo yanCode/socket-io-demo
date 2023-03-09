@@ -1,5 +1,6 @@
-import { ISocketContextActions, ISocketContextState } from "../typings";
+import { ISocketContextActions, ISocketContextState, ISocketIoContextProps } from "../../typings";
 import { Socket } from "socket.io-client";
+import { createContext } from "react";
 
 
 export const defaultSocketContextState: ISocketContextState = {
@@ -24,3 +25,14 @@ export const SocketIoReducer = (state: ISocketContextState, action: ISocketConte
       return { ...state };
   }
 };
+
+const SocketIoContext = createContext<ISocketIoContextProps>({
+  SocketIoDispatch: () => {
+  },
+  SocketIoState: defaultSocketContextState
+});
+
+export const SocketIoContextConsumer = SocketIoContext.Consumer;
+export const SocketIoContextProvider = SocketIoContext.Provider;
+
+export default SocketIoContext;

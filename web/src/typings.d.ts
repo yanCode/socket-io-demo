@@ -1,6 +1,7 @@
 import { ManagerOptions } from "socket.io-client/build/esm/manager";
 import { SocketOptions } from "socket.io-client/build/esm/socket";
 import { Socket } from "socket.io-client";
+import { Dispatch } from "react";
 
 
 export type SocketIoParameters = {
@@ -20,4 +21,9 @@ export type SocketContextPayload = string | string[] | Socket
 export interface ISocketContextActions {
   type: SocketContextActions,
   payload: SocketContextPayload
+}
+
+export interface ISocketIoContextProps {
+  SocketIoState: ISocketContextState;
+  SocketIoDispatch: Dispatch<ISocketContextActions>
 }
